@@ -17,6 +17,7 @@ limitations under the License.
 package manager
 
 import (
+	"fmt"
 	"github.com/kubesphere/kubekey/pkg/util/ssh"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"sync"
@@ -82,7 +83,7 @@ func (mgr *Manager) runTask(node *kubekeyapi.HostCfg, task NodeTask, index int) 
 		Host:  node,
 		Index: index,
 	}
-
+	fmt.Printf("node: %s", node.Address)
 	return task(mgr, node)
 }
 
